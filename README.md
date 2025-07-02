@@ -2,7 +2,7 @@
 
 > "bassin de nage" is most commonly understood as a swimming pool, often designed for lap swimming or training.
 
-Bitcoin solo mining pool for Umbrel based on [pinkyswear/ckpool-solo](https://hub.docker.com/r/pinkyswear/ckpool-solo)
+Zero fees Bitcoin solo mining pool for Umbrel based on [pinkyswear/ckpool-solo](https://hub.docker.com/r/pinkyswear/ckpool-solo)
 
 ### Install
 
