@@ -1,0 +1,25 @@
+manifestVersion: 1
+version: "0.0.1"
+id: bassin
+name: Bassin
+tagline: Solo Bitcoin Mining Pool based on CKPOOL
+description: >-
+  TBD
+category: bitcoin
+dependencies:
+  - bitcoin
+releaseNotes: >-
+  Init Release
+port: 5008
+icon: https://raw.githubusercontent.com/yanir99/ckpool-umbrel/main/yanir99-ckpool-solo/ckpool-solo-logo.png
+submitter: duckAxe
+developer: duckAxe
+website: https://github.com/duckaxe
+repo: https://github.com/duckaxe/bassin
+support: https://github.com/duckaxe/bassin/issues
+submission: https://github.com/duckaxe/bassin/pulls
+gallery:
+  - https://i.imgur.com/yyVG0Jb.jpeg
+path: ""
+defaultUsername: ""
+defaultPassword: ""

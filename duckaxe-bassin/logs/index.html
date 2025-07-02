@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CKPool Umbrel Dashboard</title>
+
+  <style>
+    /* ---------- GLOBAL ---------- */
+    :root {
+      --orange: #f7931a;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --sub: #4b5563;
+      --border: #e5e7eb;
+      --shadow: 0 4px 8px rgba(0,0,0,.05);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.4;
+      padding: 2rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1{font-size: 1.8rem;margin-bottom:1rem;color:var(--orange)}
+    h2{font-size:1.4rem;margin:2.5rem 0 1rem}
+
+    /* ---------- CARD ---------- */
+    .card{
+      background:var(--card-bg);
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:1.5rem 2rem;
+      max-width:600px;
+      width:100%;
+    }
+    .stats-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      row-gap:.6rem;
+      column-gap:1.2rem;
+    }
+    .stats-grid p{
+      margin:0;
+    }
+    .label{color:var(--sub)}
+
+    /* ---------- USER LIST ---------- */
+    #searchBox{
+      width:100%;
+      max-width:600px;
+      padding:.65rem 1rem;
+      border:1px solid var(--border);
+      border-radius:24px;
+      margin-bottom:1rem;
+      font-size:.95rem;
+    }
+    ul#userList{
+      list-style:none;
+      width:100%;
+      max-width:600px;
+      background:var(--card-bg);
+      border:1px solid var(--border);
+      border-radius:12px;
+      box-shadow:var(--shadow);
+      overflow:hidden; /* keeps borders tidy */
+    }
+    ul#userList li a{
+      display:block;
+      padding:.75rem 1rem;
+      text-decoration:none;
+      color:var(--text);
+      font-family:monospace;
+      border-bottom:1px solid var(--border);
+      transition:background .15s;
+    }
+    ul#userList li:last-child a{border-bottom:none}
+    ul#userList li a:hover{background:var(--bg)}
+  </style>
+</head>
+<body>
+  <h1>Bitcoin Mining Pool Dashboard</h1>
+
+  <!-- POOL STATS -->
+  <section id="poolCard" class="card">
+    <div id="poolStats" class="stats-grid">Loading...</div>
+  </section>
+
+  <!-- USER SEARCH -->
+  <h2>Users</h2>
+  <input id="searchBox" type="search" placeholder="Filter by address…" />
+
+  <!-- USER LIST -->
+  <ul id="userList"><li style="padding:.75rem 1rem;color:var(--sub)">Loading…</li></ul>
+
+<script>
+/* ---------- Helpers ---------- */
+function secondsToDHMS(sec){
+  const d=Math.floor(sec/86400),
+        h=Math.floor(sec%86400/3600),
+        m=Math.floor(sec%3600/60),
+        s=Math.floor(sec%60);
+  const pad=n=>String(n).padStart(2,'0');
+  return `${d}d ${pad(h)}:${pad(m)}:${pad(s)}`;
+}
+/* ---------- Pool Stats ---------- */
+async function loadPoolStats(){
+  try{
+    const res=await fetch('pool/pool.status');
+    const text=await res.text();
+    const lines=text.trim().split('\n');
+    const [gen, rate, share]=lines.map(JSON.parse);
+
+    document.getElementById('poolStats').innerHTML = `
+      <p class="label">Runtime</p><p>${secondsToDHMS(gen.runtime)}</p>
+      <p class="label">Users / Workers</p><p>${gen.Users} / ${gen.Workers}</p>
+      <p class="label">Hashrate&nbsp;1&nbsp;min</p><p>${rate.hashrate1m}</p>
+      <p class="label">Hashrate&nbsp;15&nbsp;min</p><p>${rate.hashrate15m}</p>
+      <p class="label">Accepted / Rejected</p><p>${share.accepted} / ${share.rejected}</p>
+      <p class="label">Shares/sec&nbsp;1&nbsp;min</p><p>${share.SPS1m}</p>
+    `;
+  }catch(e){
+    document.getElementById('poolStats').textContent='Error loading stats';
+  }
+}
+/* ---------- Users ---------- */
+let allAddresses = [];
+async function loadUsers(){
+  try{
+    const res=await fetch('users/');
+    const text=await res.text();
+    const doc=new DOMParser().parseFromString(text,'text/html');
+    allAddresses=[...doc.querySelectorAll('a')]
+                  .filter(a=>!a.href.endsWith('/'))
+                  .map(a=>a.textContent);
+    renderUserList(allAddresses);
+  }catch(e){
+    document.getElementById('userList').innerHTML='<li style="padding:.75rem 1rem;color:var(--sub)">Error loading users</li>';
+  }
+}
+function renderUserList(list){
+  const ul=document.getElementById('userList');
+  ul.innerHTML='';
+  if(!list.length){
+    ul.innerHTML='<li style="padding:.75rem 1rem;color:var(--sub)">No users found</li>';
+    return;
+  }
+  list.forEach(addr=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<a href="user.html?user=${addr}">${addr}</a>`;
+    ul.appendChild(li);
+  });
+}
+/* ---------- Search Filter ---------- */
+document.getElementById('searchBox').addEventListener('input',e=>{
+  const q=e.target.value.trim().toLowerCase();
+  const filtered=allAddresses.filter(a=>a.toLowerCase().includes(q));
+  renderUserList(filtered);
+});
+
+/* ---------- Init ---------- */
+loadPoolStats();
+loadUsers();
+</script>
+</body>
+</html>

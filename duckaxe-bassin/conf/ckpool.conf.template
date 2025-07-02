@@ -1,0 +1,27 @@
+{
+"btcd" : [
+        {
+                "url": "${APP_BITCOIN_NODE_IP}:8332",
+                "auth": "${APP_BITCOIN_RPC_USER}",
+                "pass": "${APP_BITCOIN_RPC_PASS}",
+                "notify" : true
+        }
+],
+"btcaddress" : "1KPAZqccgyfY8oFYSLej3pB2Pfg34JsggU",
+"donaddress" : "1KPAZqccgyfY8oFYSLej3pB2Pfg34JsggU",
+"donrate" : 1,
+"btcsig" : "/mined by umbrel-ckpool/",
+"blockpoll" : 100,
+"nonce1length" : 4,
+"nonce2length" : 8,
+"update_interval" : 30,
+"version_mask" : "1fffe000",
+"serverurl" : [
+        "0.0.0.0:3333"
+],
+"mindiff" : 1,
+"startdiff" : 1000,
+"maxdiff" : 0,
+"zmqblock" : "tcp://${APP_BITCOIN_NODE_IP}:28332",
+"logdir" : "logs"
+}

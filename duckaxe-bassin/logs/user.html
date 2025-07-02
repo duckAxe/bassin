@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>User Statistics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --orange: #f7931a;
+      --bg: #f5f7fa;
+      --card-bg: #ffffff;
+      --text: #111827;
+      --sub: #4b5563;
+      --border: #e5e7eb;
+      --shadow: 0 4px 8px rgba(0,0,0,.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 2rem 1rem 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--orange);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 800px;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      row-gap: .6rem;
+      column-gap: 1.5rem;
+    }
+
+    .stats-grid p {
+      margin: 0;
+    }
+
+    .label {
+      color: var(--sub);
+    }
+
+    table {
+      width: 100%;
+      max-width: 1000px;
+      border-collapse: collapse;
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-size: .95rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg);
+      font-weight: 600;
+      color: var(--sub);
+    }
+
+    tr:nth-child(even) {
+      background: #fcfcfc;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        border-bottom: 1px solid var(--border);
+      }
+
+      td::before {
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: var(--sub);
+      }
+
+      td:nth-child(1)::before { content: "Worker"; }
+      td:nth-child(2)::before { content: "Hashrate 1m"; }
+      td:nth-child(3)::before { content: "Hashrate 5m"; }
+      td:nth-child(4)::before { content: "Hashrate 1h"; }
+      td:nth-child(5)::before { content: "Hashrate 1d"; }
+      td:nth-child(6)::before { content: "Hashrate 7d"; }
+      td:nth-child(7)::before { content: "Shares"; }
+      td:nth-child(8)::before { content: "Best Share"; }
+      td:nth-child(9)::before { content: "Last Share"; }
+    }
+  </style>
+</head>
+<body>
+  <h1>User Statistics</h1>
+
+  <section class="card">
+    <div id="userStats" class="stats-grid">Loading...</div>
+  </section>
+
+  <h2>Workers</h2>
+  <table id="workersTable">
+    <thead>
+      <tr>
+        <th>Worker</th>
+        <th>Hashrate 1m</th>
+        <th>Hashrate 5m</th>
+        <th>Hashrate 1h</th>
+        <th>Hashrate 1d</th>
+        <th>Hashrate 7d</th>
+        <th>Shares</th>
+        <th>Best Share</th>
+        <th>Last Share</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+function humanReadable(num) {
+  const units = ["", "K", "M", "G", "T", "P"];
+  let i = 0;
+  while (num >= 1000 && i < units.length - 1) {
+    num /= 1000;
+    i++;
+  }
+  return num.toFixed(2) + units[i];
+}
+
+function secondsToDHMS(sec){
+  const d=Math.floor(sec/86400),
+        h=Math.floor(sec%86400/3600),
+        m=Math.floor(sec%3600/60),
+        s=Math.floor(sec%60);
+  const pad=n=>String(n).padStart(2,'0');
+  return `${d}d ${pad(h)}:${pad(m)}:${pad(s)}`;
+}
+
+async function loadUser() {
+  const params = new URLSearchParams(window.location.search);
+  const user = params.get('user');
+  const response = await fetch(`users/${user}`);
+  const data = await response.json();
+
+  document.getElementById('userStats').innerHTML = `
+    <p class="label">Address</p><p>${user}</p>
+    <p class="label">Workers</p><p>${data.workers}</p>
+    <p class="label">Hashrate 1m</p><p>${data.hashrate1m}</p>
+    <p class="label">Shares</p><p>${data.shares}</p>
+    <p class="label">Best Share</p><p>${humanReadable(data.bestshare)}</p>
+    <p class="label">Authorized Since</p><p>${new Date(data.authorised * 1000).toLocaleString()}</p>
+  `;
+
+  const tbody = document.querySelector("#workersTable tbody");
+  tbody.innerHTML = '';
+  data.worker.forEach(w => {
+    const workerName = w.workername.replace(user + ".", "");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${workerName}</td>
+      <td>${w.hashrate1m}</td>
+      <td>${w.hashrate5m}</td>
+      <td>${w.hashrate1hr}</td>
+      <td>${w.hashrate1d}</td>
+      <td>${w.hashrate7d}</td>
+      <td>${w.shares}</td>
+      <td>${humanReadable(w.bestshare)}</td>
+      <td>${new Date(w.lastshare * 1000).toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+loadUser();
+</script>
+</body>
+</html>

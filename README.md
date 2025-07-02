@@ -1,0 +1,1 @@
+scp -r . umbrel@umbrel.local:/umbrel/app-data
