@@ -5,6 +5,7 @@ services:
     environment:
       APP_HOST: bassin_web_1
       APP_PORT: 80
+    container_name: bassin_app_proxy_1
   
   init:
     image: alpine
@@ -15,10 +16,12 @@ services:
       - APP_BITCOIN_NODE_IP=${APP_BITCOIN_NODE_IP}
       - APP_BITCOIN_RPC_USER=${APP_BITCOIN_RPC_USER}
       - APP_BITCOIN_RPC_PASS=${APP_BITCOIN_RPC_PASS}
+      - APP_BITCOIN_RPC_PORT=${APP_BITCOIN_RPC_PORT}
+      - APP_BITCOIN_ZMQ_RAWBLOCK_PORT=${APP_BITCOIN_ZMQ_RAWBLOCK_PORT}
 
   ckpool:
     image: pinkyswear/ckpool-solo
-    entrypoint: /bin/sh -c 'while [ ! -f /conf/ckpool.conf ]; do echo "Waiting for ckpool.conf to be ready..."; sleep 1; done; rm -f /tmp/ckpool/main.pid && ./bin/ckpool -B -c ./conf/ckpool.conf'
+    entrypoint: /bin/sh -c 'while [ ! -f /srv/ckpool/conf/ckpool.conf ]; do echo "Waiting for ckpool.conf to be ready..."; sleep 1; done; rm -f /tmp/ckpool/main.pid && ./bin/ckpool -B -c ./conf/ckpool.conf'
     depends_on:
       - init
     restart: on-failure
@@ -26,8 +29,9 @@ services:
     ports:
       - "5333:3333/tcp"
     volumes:
-      - ${APP_DATA_DIR}/conf:/conf
-      - ${APP_DATA_DIR}/logs:/logs
+      - ${APP_DATA_DIR}/conf:/srv/ckpool/conf
+      - ${APP_DATA_DIR}/web:/srv/ckpool/web
+    container_name: bassin_ckpool_1
   
   web:
     image: halverneus/static-file-server
@@ -35,5 +39,6 @@ services:
       - FOLDER=/web
       - PORT=80
     volumes:
-      - ${APP_DATA_DIR}/logs:/web
+      - ${APP_DATA_DIR}/web:/web
     restart: on-failure
+    container_name: bassin_web_1
