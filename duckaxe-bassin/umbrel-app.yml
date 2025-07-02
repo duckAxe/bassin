@@ -11,7 +11,7 @@ dependencies:
 releaseNotes: >-
   Init Release
 port: 5008
-icon: https://raw.githubusercontent.com/yanir99/ckpool-umbrel/main/yanir99-ckpool-solo/ckpool-solo-logo.png
+icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
 submitter: duckAxe
 developer: duckAxe
 website: https://github.com/duckaxe
