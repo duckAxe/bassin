@@ -1,6 +1,6 @@
 manifestVersion: 1
 version: "0.0.1"
-id: bassin
+id: duckaxe-bassin
 name: Bassin
 tagline: Solo Bitcoin Mining Pool based on CKPOOL
 description: >-
