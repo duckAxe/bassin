@@ -1,1 +1,3 @@
-scp -r . umbrel@umbrel.local:/umbrel/app-data
+## Bassin
+
+Forked from https://github.com/yanir99/ckpool-umbrel
