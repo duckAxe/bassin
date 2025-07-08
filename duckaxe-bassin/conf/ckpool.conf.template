@@ -11,7 +11,8 @@
 "serverurl" : [
         "0.0.0.0:3333"
 ],
-"startdiff" : 1000,
-"zmqblock" : "tcp://${APP_BITCOIN_NODE_IP}:${APP_BITCOIN_ZMQ_RAWBLOCK_PORT}",
+"mindiff": 512,
+"startdiff": 10000,
+"zmqblock" : "tcp://${APP_BITCOIN_NODE_IP}:${APP_BITCOIN_ZMQ_SEQUENCE_PORT}",
 "logdir" : "web"
 }
