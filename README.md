@@ -1,6 +1,8 @@
- ~~~
-~ ~ ~  BASSIN
- ~~~
+```
+  ~~~
+ ~ ~ ~  BASSIN
+  ~~~
+```
 
 > A "bassin de nage" is a purpose-built swimming pool for lap swimming.
 
