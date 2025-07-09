@@ -1,10 +1,8 @@
-```
-  ~~~
- ~ ~ ~  BASSIN
-  ~~~
-```
+ ~~~
+~ ~ ~  BASSIN
+ ~~~
 
-> "A "bassin de nage" is a purpose-built swimming pool for lap swimming.
+> A "bassin de nage" is a purpose-built swimming pool for lap swimming.
 
 Zero fees Bitcoin solo mining pool for Umbrel based on [pinkyswear/ckpool-solo](https://hub.docker.com/r/pinkyswear/ckpool-solo)
 
