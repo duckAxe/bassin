@@ -6,7 +6,7 @@
 
 > A "bassin de nage" is a purpose-built swimming pool for lap swimming.
 
-Zero fees Bitcoin solo mining pool for Umbrel based on [pinkyswear/ckpool-solo](https://hub.docker.com/r/pinkyswear/ckpool-solo)
+Zero fees Bitcoin solo mining pool for umbrelOS based on [pinkyswear/ckpool-solo](https://hub.docker.com/r/pinkyswear/ckpool-solo)
 
 ### Install
 
@@ -15,7 +15,7 @@ Zero fees Bitcoin solo mining pool for Umbrel based on [pinkyswear/ckpool-solo](
 3. Start the `Bassin` app from the dashboard
 
 
-* Use `umbrel:3456` or `UmbrelIP:3456"` as Stratum pool
+* Use `umbrel:3456` or `umbrelIP:3456"` as Stratum pool
 * Use `btcaddress.worker` as username and `x` as password
 * Find the Bitcoin block 🎉
 
