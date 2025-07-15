@@ -15,21 +15,21 @@ Zero fees Bitcoin solo mining pool for umbrelOS based on [pinkyswear/ckpool-solo
 3. Start the `Bassin` app from the dashboard
 
 
-* Use `umbrel:3456` or `umbrelIP:3456"` as Stratum pool
+* Use `umbrel:3456`, `umbrel.local:3456` or `umbrel-ip:3456"` as Stratum pool
 * Use `btcaddress.worker` as username and `x` as password
 * Find the Bitcoin block 🎉
 
 
-### Dashboard (NodeJS)
+### Live Dashboard (NodeJS)
 
-1. Login to your Umbrel instance
+The dashboard displays pool, user and worker data. It updates every 60 seconds.
+
+1. Login to your umbrelOS
 2. `cd ~/umbrel/app-data/duckaxe-bassin`
 3. `node dash/board.js`
 
-Dashboard refresh time: 60s
 
-
-### Dashboard (UI)
+### Live Dashboard (UI)
 
 TBD
 
