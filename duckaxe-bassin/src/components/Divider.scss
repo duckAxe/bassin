@@ -1,0 +1,27 @@
+.divider {
+    gap: 0.85rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    line-height: 2rem;
+    margin: 1rem 2rem -1rem;
+    justify-content: space-between;
+
+    strong {
+        color: var(--color-pool);
+        white-space: nowrap;
+
+        &::after {
+            content: '~ ~ ~';
+            display: inline-block;
+            margin: 0 0 0 1rem;
+        }
+    }
+    
+    span {
+        color: var(--color-grey);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

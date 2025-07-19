@@ -1,0 +1,2 @@
+export const POLL_INTERVAL_SECONDS = 66;
+export const BASSIN_STRATUM_PORT = 3456;

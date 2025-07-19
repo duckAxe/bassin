@@ -1,0 +1,37 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3.5rem;
+    border-bottom: 1rem solid rgb(83, 213, 253);
+    background: rgb(26, 26, 26);
+
+    .progress {
+        height: 1px;
+        width: 100%;
+        background-color: var(--color-grey);
+        transition: width 1s linear;
+    }
+
+    .wrapper {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    figure {
+        display: flex;
+        padding: 0.5rem 0 0;
+    }
+    
+    figcaption {
+        font-size: 0.85rem;
+        letter-spacing: 0.1rem;
+        margin: 0.75rem 0 0;
+    }
+}

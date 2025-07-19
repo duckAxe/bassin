@@ -1,0 +1,39 @@
+{
+ "hashrate1m": "1.61T",
+ "hashrate5m": "1.49T",
+ "hashrate1hr": "1.57T",
+ "hashrate1d": "1.39T",
+ "hashrate7d": "410G",
+ "lastshare": 1752759170,
+ "workers": 2,
+ "shares": 66872638,
+ "bestshare": 146605934.0824851,
+ "bestever": 146605934,
+ "authorised": 1752577801,
+ "worker": [
+  {
+   "workername": "1BitcoinEaterAddressDontSendf59kuE.gamma",
+   "hashrate1m": "838G",
+   "hashrate5m": "947G",
+   "hashrate1hr": "1.05T",
+   "hashrate1d": "933G",
+   "hashrate7d": "276G",
+   "lastshare": 1752759170,
+   "shares": 45058218,
+   "bestshare": 146605934.0824851,
+   "bestever": 146605934
+  },
+  {
+   "workername": "1BitcoinEaterAddressDontSendf59kuE.ultra",
+   "hashrate1m": "787G",
+   "hashrate5m": "555G",
+   "hashrate1hr": "515G",
+   "hashrate1d": "454G",
+   "hashrate7d": "134G",
+   "lastshare": 1752759168,
+   "shares": 21814420,
+   "bestshare": 17426432.00804108,
+   "bestever": 17426432
+  }
+ ]
+}

@@ -1,15 +1,21 @@
 manifestVersion: 1
-version: "0.0.2"
+version: "1.0.0"
 id: duckaxe-bassin
 name: Bassin
-tagline: Solo Bitcoin Mining Pool based on CKPOOL
+tagline: Solo Bitcoin Mining Pool
 description: >-
-  TBD
+  A zero-fee Bitcoin solo mining pool for umbrellOS. Run your own CKPool at home.
+  
+  No setup, no hassle. Just point your miner to `umbrel.local:3456`, use `<btcaddress>.<worker>` as username, `x` as password. 
+
+  Every decentralized share counts.
+
+  For academic and research purposes only.
 category: bitcoin
 dependencies:
   - bitcoin
 releaseNotes: >-
-  Init Release
+  "Hello World" Release
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
 submitter: duckAxe
@@ -19,7 +25,7 @@ repo: https://github.com/duckaxe/bassin
 support: https://github.com/duckaxe/bassin/issues
 submission: https://github.com/duckaxe/bassin/pulls
 gallery:
-  - https://i.imgur.com/yyVG0Jb.jpeg
+  - https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/gallery.png
 path: ""
 defaultUsername: ""
 defaultPassword: ""

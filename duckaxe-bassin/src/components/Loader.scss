@@ -1,0 +1,24 @@
+.loader {
+    width: 100vw;
+    height: calc(100vh - 3.5rem);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        width: 1.5rem;
+        aspect-ratio: 1;
+        border-radius: 50% 50%;
+        background: #fff;
+        box-shadow: 0 0 0 0 var(--color-grey);
+        animation: l1 1s infinite;
+    }
+}
+
+@keyframes l1 {
+    100% {
+        box-shadow: 0 0 0 2rem rgba(255, 255, 255, 0.1);
+        opacity: 0;
+    }
+}

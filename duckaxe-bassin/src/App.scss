@@ -1,0 +1,73 @@
+@font-face {
+  font-display: block;
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/barlow-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-display: block;
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/barlow-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-display: block;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/public-sans-latin-400.woff2') format('woff2');
+}
+@font-face {
+  font-display: block;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/public-sans-latin-500.woff2') format('woff2');
+}
+
+:root {
+    --color-white: #FFF;
+    --color-grey: #919EAB;
+    --color-light-grey: #444;
+    --color-pool: rgb(83, 213, 253);
+    --color-orange: orange;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  height: 100%;
+  font-size: 16px;
+  color: var(--color-white);
+  font-family: 'Public Sans', sans-serif;
+  background: rgb(30, 30, 30);
+}
+
+.font-barlow {
+  font-family: "Barlow", sans-serif;
+}
+.font-monospace,
+code {
+  font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Mono", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Consolas", "Courier New", monospace;
+}
+
+.color-grey {
+  color: var(--color-grey);
+}
+.color-light-grey {
+  color: var(--color-light-grey);
+}
+.color-pool {
+  color: var(--color-pool);
+}

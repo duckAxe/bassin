@@ -36,7 +36,7 @@ async function readAndPrintPool(file) {
         'uptime': secondsToDHM(pool.runtime),
         'update': diffToNow(pool.lastupdate),
         'time': new Date().toLocaleString(),
-        'users': `${pool.Users}/${pool.Workers}`,
+        'users': `${pool.Users} / ${pool.Workers}`,
       })
     ];
 

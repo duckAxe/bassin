@@ -1,0 +1,20 @@
+.metric {
+    &-label {
+        display: block;
+        font-size: 1rem;
+        line-height: 1rem;
+        color: var(--color-grey);
+    }
+    
+    &-headline {
+        margin: 1rem 0 0;
+        font-size: 2rem;
+        white-space: nowrap;
+
+        > span {
+            color: var(--color-grey);
+            font-size: 1.5rem;
+            padding-left: 0.1rem;
+        }
+    }
+}

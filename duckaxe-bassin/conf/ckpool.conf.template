@@ -8,7 +8,5 @@
         }
 ],
 "btcsig" : "/mined by Bassin/",
-"mindiff": 512,
-"startdiff": 10000,
 "logdir" : "web"
 }

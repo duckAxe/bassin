@@ -1,0 +1,32 @@
+.message {
+    width: 100%;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    strong {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: var(--color-orange);
+    }
+
+    table {
+        margin: auto;
+
+        td {
+            &:first-child {
+                color: var(--color-grey);
+                padding-right: 1rem;
+            }
+            
+            &:last-child {
+                color: var(--color-pool);
+            }
+
+            code {
+                font-size: 0.85rem;
+            }
+        }
+    }
+}
