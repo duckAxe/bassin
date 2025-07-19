@@ -10,7 +10,6 @@ services:
   init:
     image: alpine
     entrypoint: /bin/sh -c 'apk add envsubst && cat /conf/ckpool.conf.template | envsubst > /conf/ckpool.conf && chown 1000:1000 /conf/ckpool.conf'
-    user: 1000:1000
     volumes:
       - ${APP_DATA_DIR}/conf:/conf
     environment:
@@ -23,7 +22,6 @@ services:
   ckpool:
     image: pinkyswear/ckpool-solo
     entrypoint: /bin/sh -c 'while [ ! -f /srv/ckpool/conf/ckpool.conf ]; do echo "Waiting for ckpool.conf to be ready..."; sleep 1; done; rm -f /tmp/ckpool/main.pid && ./bin/ckpool -B -c ./conf/ckpool.conf'
-    user: 1000:1000
     depends_on:
       - init
     restart: on-failure
@@ -37,7 +35,6 @@ services:
 
   web:
     image: halverneus/static-file-server
-    user: 1000:1000
     environment:
       - FOLDER=/web
       - PORT=80
