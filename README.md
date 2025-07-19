@@ -11,18 +11,17 @@ A zero-fee Bitcoin solo mining pool for umbrelOS based on [pinkyswear/ckpool-sol
 ### Install
 
 1. Add `https://github.com/duckAxe/bassin` to your Umbrel Community App Store
-  * Open your umbrelOS dashboard
-  * Open App Store
+  * Open the umbrelOS App Store
   * Click dots on the right
-  * Click Community App Stores
-  * Enter url into field
-  * Open duckAxe Community App Store
+  * Click *Community App Stores*
+  * Enter the url into the field, click *Add*
+  * Open *duckAxe Community App Store*
 2. Click the `Bassin` app to initialize the install
-3. Start the `Bassin` app from the umbrelOS dashboard
-
-* Use `umbrel:3456`, `umbrel.local:3456` or `umbrel-ip:3456"` as Stratum pool
-* Use `btcaddress.worker` as username, `x` as password
-* Find the Bitcoin block 🎉
+3. Open the `Bassin` app
+4. Point your miner to:
+  * Stratum: `umbrel:3456`, `umbrel.local:3456` or `umbrelIP:3456`
+  * Username: `btcaddress.worker`, Password: `x`
+5. Find the Bitcoin block 🎉
 
 
 ### Live Dashboard
@@ -49,7 +48,8 @@ The dashboard displays pool, user and worker data. It updates every 60 seconds.
 
 ### Todos
 
-* Start9 support 
+* Support for Start9
+* Add `Bassin` to official umbrelOS App Store
 
 
 ### Legal
