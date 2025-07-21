@@ -21,7 +21,7 @@ export const secondsToDHM = (s: number): string => {
     const minutes = Math.floor((s % 3600) / 60);
 
     if (days) {
-        return `${days}<span>d</span> ${hours}<span>h</span> ${minutes}<span>m</span>`;
+        return `${days}<span>d</span> ${hours}<span>h</span>`;
     } else if (hours) {
         return `${hours}<span>h</span> ${minutes}<span>m</span>`;
     } else {
