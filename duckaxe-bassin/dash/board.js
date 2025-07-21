@@ -21,7 +21,7 @@ async function readAndPrintPool(file) {
 
     const columns = [
       addColumnLines('hashrate', {
-        '1m': hashrate.hashrate1m,
+        '5m': hashrate.hashrate5m,
         '1h': hashrate.hashrate1hr,
         '1d': hashrate.hashrate1d,
         '7d': hashrate.hashrate7d,
@@ -64,7 +64,7 @@ async function readAndPrintUsers(folder) {
 
         const columns = [
           addColumnLines('hashrate', {
-            '1m': json.hashrate1m,
+            '5m': json.hashrate5m,
             '1h': json.hashrate1hr,
             '1d': json.hashrate1d,
             '7d': json.hashrate7d,
@@ -85,7 +85,7 @@ async function readAndPrintUsers(folder) {
         for (const worker of json.worker || []) {
           const columns = [
             addColumnLines('hashrate', {
-              '1m': worker.hashrate1m,
+              '5m': worker.hashrate5m,
               '1h': worker.hashrate1hr,
               '1d': worker.hashrate1d,
               '7d': worker.hashrate7d,

@@ -15,7 +15,7 @@ export default function Tiles({ pool }: TilesProps) {
 
 				<ul className="tile-items">
 					<li className="tile-item">
-						<Metric label={'1 Minute'} headline={hashrateSuffix(pool.hashrate1m)} />
+						<Metric label={'5 Minutes'} headline={hashrateSuffix(pool.hashrate5m)} />
 					</li>
 					<li className="tile-item">
 						<Metric label={'1 Hour'} headline={hashrateSuffix(pool.hashrate1hr)} />
