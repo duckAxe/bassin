@@ -4,13 +4,13 @@ footer {
     left: 0;
     right: 0;
     height: 3.5rem;
-    border-bottom: 1rem solid rgb(83, 213, 253);
-    background: rgb(26, 26, 26);
+    border-bottom: 1rem solid var(--color-pool);
+    background: hsl(from var(--color-back) h s calc(l - 2));
 
     .progress {
         height: 1px;
         width: 100%;
-        background-color: var(--color-grey);
+        background-color: var(--color-light-grey);
         transition: width 1s linear;
     }
 
@@ -33,5 +33,10 @@ footer {
         font-size: 0.85rem;
         letter-spacing: 0.1rem;
         margin: 0.75rem 0 0;
+    }
+
+    code {
+        font-size: 0.7rem;
+        color: var(--color-grey);
     }
 }

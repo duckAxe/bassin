@@ -19,9 +19,9 @@ export default function Footer({timer}: TimerProps) {
                     <figcaption className='font-monospace'>BASSIN</figcaption>
                 </figure>
 
-                <small className='font-barlow color-grey'>
+                <code>
                     Every decentralized share counts
-                </small>
+                </code>
             </div>
         </footer>
     );

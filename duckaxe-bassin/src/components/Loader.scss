@@ -10,13 +10,13 @@
         width: 1.5rem;
         aspect-ratio: 1;
         border-radius: 50% 50%;
-        background: #fff;
+        background: var(--color-front);
         box-shadow: 0 0 0 0 var(--color-grey);
-        animation: l1 1s infinite;
+        animation: pulse 1s ease-in-out infinite;
     }
 }
 
-@keyframes l1 {
+@keyframes pulse {
     100% {
         box-shadow: 0 0 0 2rem rgba(255, 255, 255, 0.1);
         opacity: 0;
