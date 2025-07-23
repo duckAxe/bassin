@@ -1,19 +1,54 @@
 export const hashrateSuffix = (value: string): string => {
-    const match = value.match(/^([\d.]+)([TGMZ])$/);
+    const match = value.match(/^([\d.]+)([KMGTPEZY])$/);
     if (!match) return value;
 
     const [, num, unit] = match;
     return `${num}<span>${unit}h/s</span>`;
 }
 
-export const abbreviateNumber = (value: number): string => {
-    if (value >= 1e12) return (value / 1e12).toFixed(2) + '<span>T</span>';
-    if (value >= 1e9) return (value / 1e9).toFixed(2) + '<span>G</span>';
-    if (value >= 1e6) return (value / 1e6).toFixed(2) + '<span>M</span>';
-    if (value >= 1e3) return (value / 1e3).toFixed(2) + '<span>K</span>';
+export const parseHashrate = (value: string): number => {
+    if (!value) return 0;
+
+    const units: { [key: string]: number } = {
+        H: 1,
+        K: 1e3,
+        M: 1e6,
+        G: 1e9,
+        T: 1e12,
+        P: 1e15,
+        E: 1e18,
+        Z: 1e21,
+        Y: 1e24,
+    };
+
+    const match = value.trim().match(/^([\d.,]+)\s*([KMGTPEZY]?)[H]?\b/i);
+
+    if (!match) return NaN;
+  
+    const numericPart = parseFloat(match[1].replace(',', '.')); // Komma-Support
+    const unit = match[2].toUpperCase();
+    const multiplier = units[unit] || 1;
+
+    return numericPart * multiplier;
+}
+
+export const abbreviateNumber = (value: number, withMarkup = true): string => {
+    const units = [
+        { limit: 1e12, symbol: 'T' },
+        { limit: 1e9, symbol: 'G' },
+        { limit: 1e6, symbol: 'M' },
+        { limit: 1e3, symbol: 'K' },
+    ];
+
+    for (const { limit, symbol } of units) {
+        if (value >= limit) {
+            const formatted = (value / limit).toFixed(2);
+            return formatted + (withMarkup ? `<span>${symbol}</span>` : ` ${symbol}`);
+        }
+    }
 
     return value.toString();
-}
+};
 
 export const secondsToDHM = (s: number): string => {
     const days = Math.floor(s / 86400);
@@ -21,7 +56,7 @@ export const secondsToDHM = (s: number): string => {
     const minutes = Math.floor((s % 3600) / 60);
 
     if (days) {
-        return `${days}<span>d</span> ${hours}<span>h</span> ${minutes}<span>m</span>`;
+        return `${days}<span>d</span> ${hours}<span>h</span>`;
     } else if (hours) {
         return `${hours}<span>h</span> ${minutes}<span>m</span>`;
     } else {

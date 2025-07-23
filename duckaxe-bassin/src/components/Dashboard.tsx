@@ -4,36 +4,40 @@ import Tiles from './Tiles';
 import Divider from './Divider';
 import Message from './Message';
 import Table from './Table';
+import Chart from './Chart';
 import { Pool } from '../interfaces/pool';
 import { User } from '../interfaces/users';
-import { BASSIN_STRATUM_PORT } from '../helpers/constants';
 
 interface DashboardProps {
-    pool: Pool, 
-    users: User[]
+    pool: Pool;
+    users: User[];
+    chart: number[];
 }
 
-const Dashboard = ({ pool, users }: DashboardProps) => {
-    return (
-    	<div className="dashboard">
-            <section>
-                <Divider primary={'POOL'} secondary={`${window.location.hostname}:${BASSIN_STRATUM_PORT}`} />
-                
-                <Tiles pool={pool} />
-            </section>
+const Dashboard: React.FC<DashboardProps> = ({ pool, users, chart }) => {
+    const hasUsers = users.length > 0;
+    const hasChartData = chart.length > 0;
 
-            {!Object.entries(users).length ? (
-                <Message msg={'Awaiting shares ...'} />
+    return (
+        <>
+            {hasUsers ? (
+                <div className="dashboard">
+                    <Tiles pool={pool} />
+    
+                    {hasChartData && <Chart chart={chart} />}
+    
+                    {users.map((user) => (
+                        <section className="user" key={user.username}>
+                            <Divider primary={user.username} secondary="User" />
+                            <Table user={user} />
+                        </section>
+                    ))}
+                </div>
             ) : (
-                Object.entries(users).map(([key, user]) => (
-                    <section className='user' key={key}>
-                        <Divider primary={'USER'} secondary={user.username} />
-                        <Table user={user} />
-                    </section>
-                ))
+                <Message msg="Awaiting Shares from Miner ..." />
             )}
-    	</div>
-    );
+        </>
+    );    
 };
 
 export default React.memo(Dashboard);

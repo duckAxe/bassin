@@ -8,15 +8,16 @@ interface TableProps {
 
 export default function Divider({user}: TableProps) {
     return (
-        <table className='user'>
+        <table>
             <thead>
                 <tr>
-                    <th scope="col" rowSpan={2}></th>
+                    <th scope="col"></th>
                     <th scope="col" colSpan={4} className='font-barlow'>Hashrate</th>
                     <th scope="col" colSpan={4} className='font-barlow'>Shares</th>
                 </tr>
                 <tr>
-                    <th scope="col">1 Minute</th>
+                    <th scope="col">Worker</th>
+                    <th scope="col">5 Minutes</th>
                     <th scope="col">1 Hour</th>
                     <th scope="col">1 Day</th>
                     <th scope="col">1 Week</th>
@@ -32,7 +33,7 @@ export default function Divider({user}: TableProps) {
                 {user.worker.sort((a, b) => b.bestshare - a.bestshare).map((worker: Worker) => (
                     <tr key={worker.workername}>
                         <td scope="row">{worker.workername.split('.').pop()}</td>
-                        <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(worker.hashrate1m))} />
+                        <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(worker.hashrate5m))} />
                         <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(worker.hashrate1hr))} />
                         <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(worker.hashrate1d))} />
                         <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(worker.hashrate7d))} />
@@ -46,7 +47,7 @@ export default function Divider({user}: TableProps) {
 
                 <tr>
                     <td scope="row"></td>
-                    <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(user.hashrate1m))} />
+                    <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(user.hashrate5m))} />
                     <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(user.hashrate1hr))} />
                     <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(user.hashrate1d))} />
                     <td dangerouslySetInnerHTML={createMarkup(hashrateSuffix(user.hashrate7d))} />

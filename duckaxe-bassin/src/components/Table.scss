@@ -1,7 +1,9 @@
 .user {
+    margin: 1rem 0;
+
     table {
-        width: calc(100% - 4rem);
-        margin: 1.5rem 2rem;
+        width: 100%;
+        margin: 1.5rem 0;
         border-collapse: collapse;
     
         @media (max-width: 1023px) {
@@ -36,17 +38,17 @@
     td {
         padding: 0.5em;
         white-space: nowrap;
+
+        &:first-child {
+            padding-left: 0;
+            text-align: left !important;
+        }
     }
     td {
         font-family: "Barlow", sans-serif;
         font-size: 1.2rem;
         font-weight: bold;
         text-align: right;
-
-        &:first-child {
-            padding-left: 0;
-            text-align: left;
-        }
     
         > span {
             color: var(--color-grey);
