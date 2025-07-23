@@ -11,18 +11,20 @@ export default function Message({msg}: MessageProps) {
             <strong>{msg}</strong>
                 
             <table>
-                <tr>
-                    <td>Stratum</td>
-                    <td><code>{`${window.location.hostname}:${BASSIN_STRATUM_PORT}`}</code></td>
-                </tr>
-                <tr>
-                    <td>Username</td>
-                    <td><code>&lt;BTCaddress&gt;.&lt;worker&gt;</code></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td><code>x</code></td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>Stratum</td>
+                        <td><code>{`${window.location.hostname}:${BASSIN_STRATUM_PORT}`}</code></td>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td><code>&lt;btcaddress&gt;.&lt;worker&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><code>x</code></td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );

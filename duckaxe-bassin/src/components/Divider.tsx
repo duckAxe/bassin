@@ -7,9 +7,9 @@ interface DividerProps {
 
 export default function Divider({primary, secondary}: DividerProps) {
     return (
-        <code className='divider'>
-            <strong>{primary}</strong>
+        <div className='divider'>
             <span>{secondary}</span>
-        </code>
+            <strong>{primary}</strong>
+        </div>
     );
 };

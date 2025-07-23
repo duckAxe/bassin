@@ -12,6 +12,7 @@ footer {
         width: 100%;
         background-color: var(--color-light-grey);
         transition: width 1s linear;
+        will-change: width;
     }
 
     .wrapper {

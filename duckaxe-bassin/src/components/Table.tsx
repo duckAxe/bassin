@@ -8,14 +8,15 @@ interface TableProps {
 
 export default function Divider({user}: TableProps) {
     return (
-        <table className='user'>
+        <table>
             <thead>
                 <tr>
-                    <th scope="col" rowSpan={2}></th>
+                    <th scope="col"></th>
                     <th scope="col" colSpan={4} className='font-barlow'>Hashrate</th>
                     <th scope="col" colSpan={4} className='font-barlow'>Shares</th>
                 </tr>
                 <tr>
+                    <th scope="col">Worker</th>
                     <th scope="col">5 Minutes</th>
                     <th scope="col">1 Hour</th>
                     <th scope="col">1 Day</th>
