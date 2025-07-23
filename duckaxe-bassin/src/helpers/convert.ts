@@ -47,7 +47,7 @@ export const abbreviateNumber = (value: number, withMarkup = true): string => {
         }
     }
 
-    return value.toString();
+    return value.toFixed(2);
 };
 
 export const secondsToDHM = (s: number): string => {
