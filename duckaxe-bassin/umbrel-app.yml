@@ -1,5 +1,5 @@
 manifestVersion: 1
-version: "1.1.0"
+version: "1.1.1"
 id: duckaxe-bassin
 name: Bassin
 tagline: Solo Bitcoin Mining Pool
@@ -20,7 +20,6 @@ category: bitcoin
 dependencies:
   - bitcoin
 releaseNotes: >-
-  * 1.1.0
     - Add Hashrate Chart
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
