@@ -8,8 +8,17 @@
     }
 
     strong {
+        display: block;
+        border-bottom: 1px solid transparent;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        cursor: pointer;
+        transition: color 250ms ease-out, border-color 250ms ease-out;
+
+        &.active {
+            color: transparent;
+            border-color: var(--color-front);
+        }
     }
 }
