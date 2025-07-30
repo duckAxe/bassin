@@ -46,10 +46,29 @@ The dashboard displays pool, user and worker data. It updates every 60 seconds.
 * CKPool [config](https://hub.docker.com/r/pinkyswear/ckpool-solo#confckpoolconf) can be customized at `config/ckpool.conf.template`. Restart `Bassin`.
 
 
+### FAQ
+
+#### Is it possible to hide the username?
+
+Click the username to toggle its visibility. The setting won't be saved.
+
+#### What settings are set for CKPool?
+
+`Bassin` uses CKPool's default settings, which can be found in the [Configuration](https://hub.docker.com/r/pinkyswear/ckpool-solo#configuration) list. Only the `btcsig` and `logdir` values have been adjusted for `Bassin`. The suggested difficulty can be set in your miner.
+
+#### Data seems to be incorrect
+
+The CKpool instance running on umbrelOS performs all measurements and calculations received from the miners. `Bassin` consumes data from the CKpool (API) and displays all numbers without any manipulation.
+
+#### Hashrate Chart disappears
+
+The live data for the hashrate chart is not stored permanently. It is only collected and displayed when the browser tab is active. To save memory, the browser stops logging data when the tab becomes inactive.
+
+
 ### Todos
 
-* Support for Start9
 * Add `Bassin` to official umbrelOS App Store
+* Support for Start9 (Hardware needed)
 
 
 ### Legal
