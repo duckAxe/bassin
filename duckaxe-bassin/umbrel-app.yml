@@ -1,5 +1,5 @@
 manifestVersion: 1
-version: "1.2.0"
+version: "1.3.0"
 id: duckaxe-bassin
 name: Bassin
 tagline: Solo Bitcoin Mining Pool
@@ -20,13 +20,11 @@ category: bitcoin
 dependencies:
   - bitcoin
 releaseNotes: >-
-    - Ability to hide the username (just click on it to toggle its visibility)
-    - FAQ section https://github.com/duckAxe/bassin#faq
-    - Layout improvements
+    Added umbrelOS dashboard widget for Bassin.
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
-submitter: duckAxe
-developer: duckAxe
+submitter: duckaxe
+developer: duckaxe
 website: https://github.com/duckaxe
 repo: https://github.com/duckaxe/bassin
 support: https://github.com/duckaxe/bassin/issues
@@ -36,3 +34,24 @@ gallery:
 path: ""
 defaultUsername: ""
 defaultPassword: ""
+widgets:
+  - id: "stats"
+    type: "four-stats"
+    refresh: "30s"
+    endpoint: "widget-server:3000/widgets/pool"
+    link: ""
+    example:
+      type: "four-stats"
+      link: ""
+      items:
+        - title: "Hashrate"
+          text: "2.10"
+          subtext: "Th/s"
+        - title: "Workers"
+          text: "2"
+        - title: "Best Share"
+          text: "21"
+          subtext: "G"
+        - title: "Total Shares"
+          text: "210"
+          subtext: "M"
