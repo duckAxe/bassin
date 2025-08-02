@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_USERS_DIR="$(readlink -f $(dirname "${BASH_SOURCE[0]}")/..)/web/users"
+
+for file in "$USER_DIR"/*; do
+    if [ -f "$file" ]; then
+        jq 'walk(if type == "object" and has("bestshare") then .bestshare = 0 else . end)' "$file" > "$file.tmp" && mv "$file.tmp" "$file"
+    fi
+done
