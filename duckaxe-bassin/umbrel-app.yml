@@ -21,12 +21,12 @@ dependencies:
   - bitcoin
 releaseNotes: >-
     - Ability to hide the username (just click on it to toggle its visibility)
-    - FAQ section https://github.com/duckAxe/bassin#faq
+    - FAQ section https://github.com/duckaxe/bassin#faq
     - Layout improvements
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
-submitter: duckAxe
-developer: duckAxe
+submitter: duckaxe
+developer: duckaxe
 website: https://github.com/duckaxe
 repo: https://github.com/duckaxe/bassin
 support: https://github.com/duckaxe/bassin/issues

@@ -10,12 +10,12 @@ A zero-fee Bitcoin solo mining pool for umbrelOS based on [pinkyswear/ckpool-sol
 
 ### Install
 
-1. Add `https://github.com/duckAxe/bassin` to your Umbrel Community App Store
+1. Add `https://github.com/duckaxe/bassin` to your Umbrel Community App Store
   * Open the umbrelOS App Store
   * Click dots on the right
   * Click *Community App Stores*
   * Enter the url into the field, click *Add*
-  * Open *duckAxe Community App Store*
+  * Open *duckaxe Community App Store*
 2. Click the `Bassin` app to initialize the install
 3. Open the `Bassin` app
 4. Point your miner to:
