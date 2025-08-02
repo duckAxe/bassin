@@ -48,6 +48,10 @@ The dashboard displays pool, user and worker data. It updates every 60 seconds.
 
 ### FAQ
 
+#### Does Bassin have an umbrelOS widget?
+
+Of course.
+
 #### Is it possible to hide the username?
 
 Click the username to toggle its visibility. The setting won't be saved.
