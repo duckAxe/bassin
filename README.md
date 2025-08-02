@@ -37,7 +37,7 @@ The dashboard displays pool, user and worker data. It updates every 60 seconds.
 
 1. Login to your umbrelOS
 2. `cd ~/umbrel/app-data/duckaxe-bassin`
-3. `node dash/board.js`
+3. `node dash/board.cjs`
 
 
 ### CKPool
@@ -47,6 +47,10 @@ The dashboard displays pool, user and worker data. It updates every 60 seconds.
 
 
 ### FAQ
+
+#### Does Bassin have an umbrelOS widget?
+
+Of course.
 
 #### Is it possible to hide the username?
 
