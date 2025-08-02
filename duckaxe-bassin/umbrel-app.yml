@@ -1,5 +1,5 @@
 manifestVersion: 1
-version: "1.3.0"
+version: "1.3.1"
 id: duckaxe-bassin
 name: Bassin
 tagline: Solo Bitcoin Mining Pool
@@ -20,7 +20,7 @@ category: bitcoin
 dependencies:
   - bitcoin
 releaseNotes: >-
-    Added umbrelOS dashboard widget for Bassin.
+    Added UmbrelOS dashboard widget for Bassin. Also fixed the Terminal accessible Bassin dashboard.
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
 submitter: duckaxe
