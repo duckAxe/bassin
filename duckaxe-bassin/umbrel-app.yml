@@ -20,7 +20,7 @@ category: bitcoin
 dependencies:
   - bitcoin
 releaseNotes: >-
-    Added UmbrelOS dashboard widget for Bassin. Also fixed the Terminal accessible Bassin dashboard.
+    Added umbrelOS dashboard widget for Bassin. Also fixed the Terminal accessible Bassin dashboard.
 port: 5008
 icon: https://raw.githubusercontent.com/duckaxe/bassin/main/duckaxe-bassin/icon.png
 submitter: duckaxe
